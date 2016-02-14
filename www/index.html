@@ -16,6 +16,7 @@
     <script src="cordova.js"></script>
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/jquery.min.js"></script>
 </head>
 
 <body ng-app="ionicApp">
@@ -30,11 +31,11 @@
                     <button class="button button-block button-dark" ng-click="setTimer()">
                         Get started
                     </button>
-                    <button class="button button-light button-large" ng-click="exit()">
-                        Exit
-                    </button>
                     <button class="button  button-calm button-large" ng-click="setInfo()">
                         Info
+                    </button>
+                    <button class="button button-light button-large" ng-click="exit()">
+                        Exit
                     </button>
                 </div>
             </ion-content>
@@ -60,7 +61,7 @@
                     <div ng-show="customTime" class="item item-input-inset">
                         <p> Enter Time: &nbsp;&nbsp; </p>
                         <label class="item-input-wrapper">
-                            <input type="text" placeholder="Minutes">
+                            <input type="text" id="custom_time" placeholder="Minutes">
                         </label>
                     </div>
                     <div>
@@ -79,9 +80,20 @@
             </ion-content>
         </ion-view>
     </script>
+
     <script id="second.html" type="text/ng-template">
         <ion-view view-title="Timer">
-            <ion-content padding="true"></ion-content>
+            <ion-content>
+            <div class="list">
+                <div on-touch="blackTouch()" style="background-color:black;height:309px;" class="item">
+                <span class="white-huge-size">0:{{existing}}:00</span>
+                </div>
+                <div on-touch="whiteTouch()" style="background-color:white;height:329px;" class="item">
+                <span class="black-huge-size">0:{{existing}}:00</span>
+                </div>
+            </div>
+
+            </ion-content>
         </ion-view>
     </script>
 
@@ -104,7 +116,7 @@
     <i class="icon ion-ios-lightbulb"></i>
     Coming from Hyderabad, a global city in south India I was always fascinated by chess, programming and literature. My website is:
 
-        <h3 class=" text-center"><a href="http://www.narenarya.in">www.narenarya.in</a>  </h3>
+        <h3 style="font-family:black_cherry" class=" text-center"><a href="http://www.narenarya.in">www.narenarya.in</a>  </h3>
   </p>
 
 </div>
