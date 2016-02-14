@@ -18,18 +18,28 @@ angular.module('ionicApp', ['ionic'])
      url: '/timer',
      templateUrl: 'second.html'
         })
-  
+  .state('info', {
+     url: '/info',
+     templateUrl: 'third.html'
+        })
   $urlRouterProvider.otherwise('/begin')
 })
 
-.controller('beginCtrl', function($scope, $state) {
+.controller('beginCtrl', function($scope, $state, myService) {
+  $scope.exit = function(user){
+    console.log("Exiting the application");
+    window.navigator.app.exitApp()
+  }
   $scope.setTimer = function(user) {
     $state.go('settimer');
   };
   
+  $scope.setInfo = function(user) {
+    $state.go('info');
+  };
 })
 
-.controller('timerCtrl', function($scope, $state) {
+.controller('timerCtrl', function($scope, $state, myService) {
 
     // Define initial values
     $scope.minutes = 5;
@@ -44,6 +54,20 @@ angular.module('ionicApp', ['ionic'])
 
     // Load timer template
     $scope.startTimer = function(user) {
+    
     $state.go('timer');
   };
+}).factory('myService', function() {
+       var savedData = {}
+       function set(data) {
+         savedData = data;
+       }
+       function get() {
+        return savedData;
+       }
+
+       return {
+        set: set,
+        get: get
+       }
 });
