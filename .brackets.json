@@ -1,0 +1,8 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/home/naren/proglab/ChessTimer/platforms/android/assets/www/plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "/home/naren/proglab/ChessTimer/hooks/after_prepare/010_add_platform_class.js",
+        "/home/naren/proglab/ChessTimer/platforms/android/assets/www/plugins/cordova-plugin-device/www/device.js",
+        "/home/naren/proglab/ChessTimer/platforms/android/assets/www/plugins/cordova-plugin-statusbar/www/statusbar.js"
+    ]
+}

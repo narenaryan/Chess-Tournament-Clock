@@ -3,39 +3,47 @@ angular.module('ionicApp', ['ionic'])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('tabs', {
-      url: '/',
-      templateUrl: 'index.html'
-    })
-    .state('tabs.home', {
-      url: '/home',
-      views: {
-        'home-tab': {
-          templateUrl: 'templates/home.html',
-          controller: 'HomeTabCtrl'
-        }
-      }
-    })
-    .state('tabs.facts', {
-      url: '/facts',
-      views: {
-        'home-tab': {
-          templateUrl: 'templates/facts.html'
-        }
-      }
-    })
+    .state('begin', {
+      url: '/begin',
+      templateUrl: 'begin.html',
+      controller: 'beginCtrl'
 
+    })
+    .state('settimer', {
+     url: '/settimer',
+     templateUrl: 'first.html',
+     controller: 'timerCtrl'
+        })
+  .state('timer', {
+     url: '/timer',
+     templateUrl: 'second.html'
+        })
+  
+  $urlRouterProvider.otherwise('/begin')
 })
 
-.controller('SignInCtrl', function($scope, $state) {
-  
-  $scope.signIn = function(user) {
-    console.log('Sign-In', user);
-    $state.go('tabs');
+.controller('beginCtrl', function($scope, $state) {
+  $scope.setTimer = function(user) {
+    $state.go('settimer');
   };
   
 })
 
-.controller('HomeTabCtrl', function($scope) {
-  console.log('HomeTabCtrl');
+.controller('timerCtrl', function($scope, $state) {
+
+    // Define initial values
+    $scope.minutes = 5;
+    $scope.rangeTime = true;
+    $scope.customTime = false;
+
+    // Toggle Range and Custom timers
+    $scope.ShowHide = function () {
+                $scope.customTime = $scope.customTime ? false : true;
+                $scope.rangeTime = $scope.rangeTime ? false : true;
+            }
+
+    // Load timer template
+    $scope.startTimer = function(user) {
+    $state.go('timer');
+  };
 });

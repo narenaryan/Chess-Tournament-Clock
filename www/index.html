@@ -14,7 +14,7 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.js"></script>
+    
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -25,18 +25,18 @@
   
   <body ng-app="ionicApp">
     
-    <ion-nav-bar class="bar-positive">
+    <ion-nav-bar class="bar-positive" style="font-family:black_cherry">
       <ion-nav-back-button class="button-icon ion-arrow-left-c">
       </ion-nav-back-button>
     </ion-nav-bar>
              
     <ion-nav-view></ion-nav-view>
 
-    <script id="index.html" type="text/ng-template">
+    <script id="begin.html" type="text/ng-template">
       <ion-view view-title="Fischer's Clock" style="text-center">
         <ion-content class="landing-page">
           <div class="padding">
-            <button class="button button-block button-dark" ng-click="signIn(user)">
+            <button class="button button-block button-dark" ng-click="setTimer()">
               Get started
             </button>
             <p class="text-center">
@@ -48,31 +48,45 @@
     </script>
 
 
-    <script id="templates/home.html" type="text/ng-template">
+    <script id="first.html" type="text/ng-template">
       <ion-view view-title="Home">
-        <ion-content padding="true">
-          <p>Example of Ionic tabs. Navigate to each tab, and
-          navigate to child views of each tab and notice how
-          each tab has its own navigation history.</p>
-          <p>
-            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts">Scientific Facts</a>
-          </p>
+        <ion-content padding="true" class="text-center">
+        <div class="list">
+          <h3>Clock Time<span>: {{minutes}}m</span></h3>
+
+          <div ng-show="rangeTime" class="item range">
+            <i class="icon ion-ios-bolt-outline"></i>(5m)
+            <input type="range" name="timer", min="5" max="300" value="30">
+            <i class="icon ion-ios-lightbulb"></i>(5h)
+          </div>
+
+          <div>
+          <ion-toggle ng-model="airplaneMode" toggle-class="toggle-calm" ng-click="ShowHide()"> Enable Custom Value:</ion-toggle>
+        </div>
+          <div ng-show="customTime" class="item item-input-inset">
+          <p> Enter Time: &nbsp;&nbsp; </p>
+    <label class="item-input-wrapper">
+      <input type="text" placeholder="Minutes">
+    </label>
+  </div>
+
+          <div>
+          <p><br />
+            <a class="button button-large button-assertive icon icon-right ion-chevron-right" ng-click="startTimer()">Start</a>
+          </p><br /><br />
+          </div>
+          <div>
+          <p>Quote of the day</p>
+           <iframe src='http://chess-db.com/public/chessquote.jsp' scrolling='no' width='240' height='290' frameborder='0'></iframe>
+           </div>
+           </div>   
         </ion-content>
       </ion-view>
     </script>
 
-    <script id="templates/facts.html" type="text/ng-template">
-      <ion-view view-title="Facts">
+    <script id="second.html" type="text/ng-template">
+      <ion-view view-title="Timer">
         <ion-content padding="true">
-          <p>Banging your head against a wall uses 150 calories an hour.</p>
-          <p>Dogs have four toes on their hind feet, and five on their front feet.</p>
-          <p>The ant can lift 50 times its own weight, can pull 30 times its own weight and always falls over on its right side when intoxicated.</p>
-          <p>A cockroach will live nine days without it's head, before it starves to death.</p>
-          <p>Polar bears are left handed.</p>
-          <p>
-            <a class="button icon ion-home" href="#/tab/home"> Home</a>
-            <a class="button icon icon-right ion-chevron-right" href="#/tab/facts2">More Facts</a>
-          </p>
         </ion-content>
       </ion-view>
     </script> 

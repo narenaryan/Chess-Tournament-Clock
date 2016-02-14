@@ -12,9 +12,9 @@
 }
 
 .quote{
-    position: absolute;
-    margin-top: 350px;
-    margin-left: 78px;
+    position: relative;
+    margin-left: 38px;
+    margin-bottom: 30px;
     
 }
 
